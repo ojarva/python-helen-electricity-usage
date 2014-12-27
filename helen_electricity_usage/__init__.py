@@ -16,7 +16,11 @@ class Helen(object):
     def login(self):
         self.session.get("https://www2.helen.fi/mobiili/login.jsp")
         self.session.post("https://www2.helen.fi/mobiili/j_spring_security_check", data={"j_username": "%s;;ENERGY;FIN" % self.username, "j_password": self.password})
-        self.session.get("https://www2.helen.fi/mobiili/app/index.html")
+        response = self.session.get("https://www2.helen.fi/mobiili/app/index.html")
+        if response.status_code != 200:
+            raise ValueError("Login failed.")
+        if len(response.history) > 0:
+            raise ValueError("Login failed.")
 
     def get_session_time(self):
         self.session_time += 1
@@ -24,6 +28,10 @@ class Helen(object):
 
     def get_date(self, date):
         response = self.session.get("https://www2.helen.fi/mobiili/meteringpoints/ELECTRICITY/%s/series?resolution=DAYS_AS_HOURS&numberofyears=1&numberofmonths=12&selector=value,hour,day,month,year,milestones(title,note,timestamp(date,month,year))&enddate=%s&_=%s" % (self.metering_point_number, date, self.get_session_time()))
+        if response.status_code != 200:
+            raise ValueError("Server returned %s" % response.status_code)
+        if len(response.history) > 0:
+            raise ValueError("Request was redirected. Probably authorization issue - is metering point number set properly?")
         return json.loads(response.text)
 
 def main(args):
