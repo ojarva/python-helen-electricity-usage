@@ -1,7 +1,10 @@
 Helsingin Energia electricity usage scraper
 ===========================================
 
-This small script fetches per-hour electricity usage from Helsingin Energia (Helen) website. This is unofficial implementation which may break at any time, if Helen changes their website or implements any additional validations.
+This small script fetches per-hour electricity usage from Helsingin
+Energia (Helen) website. This is unofficial implementation which may
+break at any time, if Helen changes their website or implements any
+additional validations.
 
 Installation:
 
@@ -18,7 +21,10 @@ Usage:
   helen.login()
   print helen.get_date("20141225")
 
-To obtain username and password, register using `web interface <https://www2.helen.fi/raportointi/>`_ (Flash and paper invoice is required). After registering and signing in, metering point number is available on the top-right corner.
+To obtain username and password, register using `web interface
+<https://www2.helen.fi/raportointi/>`_ (Flash and paper invoice is
+required). After registering and signing in, metering point number is
+available on the top-right corner.
 
 Sample output (python dictionary):
 
@@ -41,4 +47,8 @@ Sample output (python dictionary):
   }...
   ]
 
-There is no way to check whether data for specific date is available. If data is not available, value will be 0.0.
+There is no way to check whether data for specific date is available. If
+data is not available, all fields are provided, but values are 0.0.
+There is no way to distinct between missing data and hours with no
+electricity consumption. Usually the data is available next day, but
+that is not guaranteed.
