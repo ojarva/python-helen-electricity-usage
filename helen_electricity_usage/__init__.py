@@ -32,7 +32,11 @@ class Helen(object):
             raise ValueError("Server returned %s" % response.status_code)
         if len(response.history) > 0:
             raise ValueError("Request was redirected. Probably authorization issue - is metering point number set properly?")
-        return json.loads(response.text)
+        try:
+            return json.loads(response.text)
+        except:
+            print (response.text)
+            raise ValueError("Unable to parse response JSON")
 
 def main(args):
     if len(args) != 3:
