@@ -9,7 +9,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='helen_electricity_usage',
-    version='0.0.3',
+    version='0.1.0',
     description='Small library for scraping electricity usage information from Helsingin Energia website',
     long_description=long_description,
     url='https://github.com/ojarva/python-helen-electricity-usage',
@@ -34,7 +34,7 @@ setup(
     ],
     keywords='electricity helen',
     packages=["helen_electricity_usage"],
-    install_requires=['requests>=2.5.1'],
+    install_requires=['requests>=2.5.1', 'beautifulsoup4>=4.4.1'],
 
     extras_require = {
         'dev': ['twine', 'wheel'],
