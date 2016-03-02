@@ -5,6 +5,7 @@ import requests
 import sys
 import time
 
+
 class Helen(object):
 
     def __init__(self, username, password, metering_point_number, customer_number):
@@ -25,7 +26,7 @@ class Helen(object):
         shibboleth_url = loginform.get("action")
         post_data = {}
         for item in loginform.find_all("input"):
-            if item.get("name") == None:
+            if item.get("name") is None:
                 continue
             post_data[item.get("name")] = item.get("value")
 
@@ -36,7 +37,7 @@ class Helen(object):
         return self.session_time
 
     def get_date(self, date):
-        response = self.session.get( "https://www2.helen.fi/api/meteringpoints/0/%s/series?enddate=%s&numberofmonths=12&numberofyears=2&resolution=DAYS_AS_HOURS&selector=value,status,day,month,year,hour,milestones(title,note,timestamp(date,month,year)),temperature,prediction,telePrediction,budget,teleEuro,waterFlowPrice" % (self.metering_point_number, date), auth=('%s/MainUserElec' % self.customer_number, 'N/A'))
+        response = self.session.get("https://www2.helen.fi/api/meteringpoints/0/%s/series?enddate=%s&numberofmonths=12&numberofyears=2&resolution=DAYS_AS_HOURS&selector=value,status,day,month,year,hour,milestones(title,note,timestamp(date,month,year)),temperature,prediction,telePrediction,budget,teleEuro,waterFlowPrice" % (self.metering_point_number, date), auth=('%s/MainUserElec' % self.customer_number, 'N/A'))
         if response.status_code != 200:
             raise ValueError("Server returned %s" % response.status_code)
         if len(response.history) > 0:
@@ -46,6 +47,7 @@ class Helen(object):
         except:
             print (response.text)
             raise ValueError("Unable to parse response JSON")
+
 
 def main(args):
     if len(args) != 4:
