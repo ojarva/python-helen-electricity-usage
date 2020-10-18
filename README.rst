@@ -17,7 +17,7 @@ Usage:
 ::
 
   import helen_electricity_usage
-  helen = helen_electricity_usage.Helen(username, password, metering_point_number)
+  helen = helen_electricity_usage.Helen(username, password, metering_point_number, customer_number)
   helen.login()
   print helen.get_date("20141225")
 
