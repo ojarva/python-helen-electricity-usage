@@ -30,22 +30,30 @@ Sample output (python dictionary):
 
 ::
 
-  [ {
-    "milestones" : [ ],
-    "month" : 12,
-    "value" : 0.22999,
-    "year" : 2014,
-    "day" : 25,
-    "hour" : 0
-  }, {
-    "milestones" : [ ],
-    "month" : 12,
-    "value" : 0.15,
-    "year" : 2014,
-    "day" : 25,
-    "hour" : 1
-  }...
-  ]
+ [{'month': 10,
+  'hour': 0,
+  'year': 2020,
+  'waterFlowPrice': 0.0,
+  'temperature': 11.8,
+  'milestones': [],
+  'value': 0.92999,
+  'day': 1,
+  'teleEuro': 0.0,
+  'status': 30,
+  'telePrediction': 0.0},
+ {'month': 10,
+  'hour': 1,
+  'year': 2020,
+  'waterFlowPrice': 0.0,
+  'temperature': 11.2,
+  'milestones': [],
+  'value': 0.66,
+  'day': 1,
+  'teleEuro': 0.0,
+  'status': 30,
+  'telePrediction': 0.0},
+  ...
+ ]
 
 There is no way to check whether data for specific date is available. If
 data is not available, all fields are provided, but values are 0.0.
