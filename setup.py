@@ -9,7 +9,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='helen_electricity_usage',
-    version='0.1.1',
+    version='0.2.0',
     description='Small library for scraping electricity usage information from Helsingin Energia website',
     long_description=long_description,
     url='https://github.com/ojarva/python-helen-electricity-usage',
@@ -24,11 +24,10 @@ setup(
         'Topic :: Internet',
         'License :: OSI Approved :: BSD License',
 
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: Implementation :: PyPy',
     ],
     keywords='electricity helen',
