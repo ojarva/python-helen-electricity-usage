@@ -33,7 +33,7 @@ setup(
     ],
     keywords='electricity helen',
     packages=["helen_electricity_usage"],
-    install_requires=['requests>=2.5.1', 'beautifulsoup4>=4.4.1'],
+    install_requires=['requests~=2.28'],
 
     extras_require={
         'dev': ['twine', 'wheel'],
