@@ -103,7 +103,7 @@ class Helen:
         action, code, state = self._parse_js_redirect_form(res.text)
         res = self.session.get(action, params={"code": code, "state": state})
 
-        self.access_token = self.session.cookies.get("access-token")
+        self.access_token = self.session.cookies.get("accessToken")
 
     def get_electricity(self, begin: datetime, end: datetime, resolution: str = "hour", allow_transfer: bool = True) -> dict:
         """ Get Electricity consumption metrics from Helen API
