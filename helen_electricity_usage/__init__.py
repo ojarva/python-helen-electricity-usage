@@ -97,13 +97,13 @@ class Helen:
             raise Exception("Something went wrong with login :(")
 
         # Hard coded manual redirect from https://www.helen.fi/authResponse
-        res = self.session.get("https://api.omahelen.fi/v2/login", params={"redirect": "https://web.omahelen.fi/?lang=fi", "lang": "fi"})
+        res = self.session.get("https://api.oma.helen.fi/v2/login", params={"redirect": "https://web.oma.helen.fi/?lang=fi", "lang": "fi"})
 
         # Continue with new code and state.
         action, code, state = self._parse_js_redirect_form(res.text)
         res = self.session.get(action, params={"code": code, "state": state})
 
-        self.access_token = self.session.cookies.get("accessToken")
+        self.access_token = self.session.cookies.get("access-token")
 
     def get_electricity(self, begin: datetime, end: datetime, resolution: str = "hour", allow_transfer: bool = True) -> dict:
         """ Get Electricity consumption metrics from Helen API
