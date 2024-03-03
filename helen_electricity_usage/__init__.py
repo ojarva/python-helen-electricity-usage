@@ -97,7 +97,7 @@ class Helen:
             raise Exception("Something went wrong with login :(")
 
         # Hard coded manual redirect from https://www.helen.fi/authResponse
-        res = self.session.get("https://api.omahelen.fi/v2/login", params={"redirect": "https://web.omahelen.fi/?lang=fi", "lang": "fi"})
+        res = self.session.get("https://api.oma.helen.fi/v2/login", params={"redirect": "https://web.oma.helen.fi/?lang=fi", "lang": "fi"})
 
         # Continue with new code and state.
         action, code, state = self._parse_js_redirect_form(res.text)
